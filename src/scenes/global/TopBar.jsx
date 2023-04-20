@@ -1,4 +1,4 @@
-import * as React from "react";
+import {useState,useContext} from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,8 +11,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 
-import { tokens } from "../../theme";
+import {ColorModeContext, tokens } from "../../theme";
 import { useTheme } from '@mui/material/styles';
 
 const pages = ["About", "Markets", "Blog & News"];
@@ -22,9 +24,10 @@ const TopBar = () => {
     
 const theme = useTheme();
 const colors = tokens(theme.palette.mode); 
+const colorMode = useContext(ColorModeContext);
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,12 +45,12 @@ const colors = tokens(theme.palette.mode);
   };
 
   return (
-    <AppBar position="static" style={{backgroundColor:`${colors.blueAccent[800]}`,}}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+    <AppBar position="static" style={{backgroundColor:`${colors.primary[800]}`,}}>
+      <Container maxWidth="xl" >
+        <Toolbar disableGutters >
           
           <Typography
-            variant="h2"
+            variant="h1"
             noWrap
             component="a"
             href="/"
@@ -56,13 +59,13 @@ const colors = tokens(theme.palette.mode);
               display: { xs: "none", md: "flex" },
               fontWeight: 600,
               letterSpacing: ".2rem",
-              color: `${colors.greenAccent[400]}`,
+              color: `${colors.blueAccent[300]}`,
               textDecoration: "none",
             }}
           >
             AggrolabFX
           </Typography>
-
+          
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -111,18 +114,18 @@ const colors = tokens(theme.palette.mode);
               flexGrow: 1,
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: `${colors.greenAccent[400]}`,
+              color: `${colors.blueAccent[300]}`,
               textDecoration: "none",
             }}
           >
             AggrolabFX
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display:{ xs: "none", md:"flex" },justifyContent:'center'}}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block",fontSize:"16px" }}
+                sx={{ my: 1, mx:1.3, color: "white", display: "block",fontSize:"21px" ,color:`${colors.grey[100]}`}}
               >
                 {page}
               </Button>
@@ -157,6 +160,13 @@ const colors = tokens(theme.palette.mode);
                 </MenuItem>
               ))}
             </Menu>
+            <IconButton onClick={colorMode.toggleColorMode} sx={{mx:2}}>
+          {theme.palette.mode === "dark" ? (
+            <DarkModeOutlinedIcon />
+          ) : (
+            <LightModeOutlinedIcon />
+          )}
+        </IconButton>
           </Box>
         </Toolbar>
       </Container>

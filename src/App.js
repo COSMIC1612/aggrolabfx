@@ -15,7 +15,7 @@ function App() {
         backgroundRepeat:'no-repeat',
         height: '100vh',
         backgroundPosition: 'center',
-        '@media (max-width: 768px)': {
+        '@media (maxWidth: 768px)': {
           backgroundSize: 'contain',
           backgroundPosition: 'top',
         },
