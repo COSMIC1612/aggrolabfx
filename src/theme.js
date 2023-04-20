@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo } from "react";
+import { createContext, useState, useMemo,useEffect } from "react";
 import { createTheme } from "@mui/material/styles";
 
 export const tokens = (mode) => ({
@@ -80,7 +80,7 @@ export const tokens = (mode) => ({
           500: "#141b2d",
           600: "#1F2A40",
           700: "#727681",
-          800: "#a1a4ab",
+          800: "#fff",
           900: "#d0d1d5",
         },
         greenAccent: {
@@ -197,8 +197,10 @@ export const ColorModeContext = createContext({
 });
 
 export const useMode = () => {
-  const [mode, setMode] = useState("dark");
-
+  const [mode, setMode] = useState( localStorage.getItem("colorMode") || "dark");
+  useEffect(() => {
+    localStorage.setItem("colorMode", mode);
+  }, [mode]);
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () =>

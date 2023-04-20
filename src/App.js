@@ -1,5 +1,6 @@
 import TopBar from "./scenes/global/TopBar";
 import Box from "@mui/material/Box";
+import Home from "./scenes/Home/Home"; 
 import { ColorModeContext,useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <div className="app">
           <main className="content">
             <TopBar/>
+            <Home/>
           </main>
         </div>
         </Box>

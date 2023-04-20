@@ -1,4 +1,5 @@
 import {useState,useContext} from "react";
+import classes from "./TopBar.module.css";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -56,10 +57,10 @@ const colorMode = useContext(ColorModeContext);
             href="/"
             sx={{
               mr: 5,
+              fontFamily: "'Goldman', cursive",
               display: { xs: "none", md: "flex" },
-              fontWeight: 600,
               letterSpacing: ".2rem",
-              color: `${colors.blueAccent[300]}`,
+              color: `${colors.blueAccent[500]}`,
               textDecoration: "none",
             }}
           >
@@ -114,7 +115,7 @@ const colorMode = useContext(ColorModeContext);
               flexGrow: 1,
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: `${colors.blueAccent[300]}`,
+              color: `${colors.blueAccent[500]}`,
               textDecoration: "none",
             }}
           >
@@ -125,7 +126,7 @@ const colorMode = useContext(ColorModeContext);
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 1, mx:1.3, color: "white", display: "block",fontSize:"21px" ,color:`${colors.grey[100]}`}}
+                sx={{ my: 1.5, mx:1.3, color: "white", display: "block",fontSize:"21px" ,color:`${colors.grey[100]}`}}
               >
                 {page}
               </Button>
