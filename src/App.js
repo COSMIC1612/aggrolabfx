@@ -2,7 +2,8 @@ import TopBar from "./scenes/global/TopBar";
 import Box from "@mui/material/Box";
 import Home from "./scenes/Home/Home"; 
 import { ColorModeContext,useMode } from "./theme";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import {ThemeProvider} from "@mui/material/styles"
 function App() {
   const [theme , colorMode]= useMode()
   return (

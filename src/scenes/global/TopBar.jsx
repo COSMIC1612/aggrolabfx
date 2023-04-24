@@ -1,5 +1,5 @@
 import {useState,useContext} from "react";
-import classes from "./TopBar.module.css";
+/* import classes from "./TopBar.module.css"; */
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,9 +8,9 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
+/* import Avatar from "@mui/material/Avatar"; */
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
+/* import Tooltip from "@mui/material/Tooltip"; */
 import MenuItem from "@mui/material/MenuItem";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -19,7 +19,7 @@ import {ColorModeContext, tokens } from "../../theme";
 import { useTheme } from '@mui/material/styles';
 
 const pages = ["About", "Markets", "Blog & News"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+/* const settings = ["Profile", "Account", "Dashboard", "Logout"]; */
 
 const TopBar = () => {
     
@@ -28,22 +28,22 @@ const colors = tokens(theme.palette.mode);
 const colorMode = useContext(ColorModeContext);
 
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+/*   const [anchorElUser, setAnchorElUser] = useState(null); */
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
+  /* const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
-  };
+  }; */
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+/*   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };
+  }; */
 
   return (
     <AppBar position="static" style={{backgroundColor:`${colors.primary[800]}`,}}>
@@ -74,7 +74,7 @@ const colorMode = useContext(ColorModeContext);
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="`${colors.grey[100]}`"
             >
               <MenuIcon />
             </IconButton>
@@ -134,12 +134,14 @@ const colorMode = useContext(ColorModeContext);
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+          <Button style={{backgroundColor:`${colors.blueAccent[600]}`,fontSize:"16px",color:`${colors.grey[100]}`}} variant="contained">Register now</Button>
+
+           {/*  <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
-            </Tooltip>
-            <Menu
+            </Tooltip> */}
+            {/* <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -160,7 +162,7 @@ const colorMode = useContext(ColorModeContext);
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
             <IconButton onClick={colorMode.toggleColorMode} sx={{mx:2}}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />

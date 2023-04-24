@@ -1,6 +1,12 @@
 import React from 'react'
 import classes from './Login.module.css';
-import { Grid,Paper, Avatar, TextField, Button, Typography,Link } from '@mui/material'
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Avatar from "@mui/material/Avatar";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Link from "@mui/material/Link";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -10,7 +16,7 @@ const Login=()=>{
     const theme=useTheme();
     const colors=tokens(theme.palette.mode);
     const avatarStyle={backgroundColor:`${colors.greenAccent[500]}`}
-    const btnstyle={margin:'20px 0',backgroundColor:`${colors.blueAccent[600]}`}
+    const btnstyle={margin:'20px 0',backgroundColor:`${colors.blueAccent[600]}`,color:`${colors.grey[100]}`,fontSize:"14px"}
     return(
         <Grid className={classes["grid-container"]}>
             <Paper style={{padding:"20px",height:"60vh", borderRadius:"5%"}}>
