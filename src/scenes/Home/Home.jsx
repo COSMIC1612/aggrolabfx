@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <Fragment>
     <div className={classes.home}>
-      <h1 style={{ color: `${colors.greenAccent[700]}` }}>
+      <h1 style={{ color: `${colors.greenAccent[400]}` }}>
         <span>Ready </span>
         <span>to </span>
         <span>take </span>

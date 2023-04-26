@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto+Slab&display=swap');
 .home {
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
 }
 
   .home h1 {
-    font-family: "Montserrat Medium";
+    font-family: "Roboto Slab", serif;
     cursor: pointer;
     font-size: 60px;
     transform: scale(0.94);

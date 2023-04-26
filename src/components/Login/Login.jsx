@@ -15,14 +15,14 @@ import { tokens } from '../../theme';
 const Login=()=>{
     const theme=useTheme();
     const colors=tokens(theme.palette.mode);
-    const avatarStyle={backgroundColor:`${colors.greenAccent[500]}`}
+    const avatarStyle={backgroundColor:`${colors.greenAccent[400]}`}
     const btnstyle={margin:'20px 0',backgroundColor:`${colors.blueAccent[600]}`,color:`${colors.grey[100]}`,fontSize:"14px"}
     return(
         <Grid className={classes["grid-container"]}>
             <Paper style={{padding:"20px",height:"60vh", borderRadius:"5%"}}>
                 <Grid align='center'>
                      <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
-                    <h2>Sign in now and explore your trading options !</h2>
+                    <h2 style={{color:`${colors.greenAccent[400]}`}}>Sign in now and explore your trading options !</h2>
                 </Grid>
                 <TextField color="secondary" label='Username' placeholder='Enter username' fullWidth required/>
                 <TextField color="secondary" style={{margin:"20px 0px"}} label='Password' placeholder='Enter password' type='password' fullWidth required/>
