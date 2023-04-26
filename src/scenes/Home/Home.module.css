@@ -2,14 +2,14 @@
 .home {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     height: 15vh;
   }
 .login{
     display:flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     margin: 0px 0px 0px 10px;
     
@@ -86,6 +86,11 @@
   @media only screen and (max-width: 1300px) {
     .home h1{
       font-size: 40px;
+    }
+  }
+  @media only screen and (max-width: 972px) {
+    .home h1{
+      font-size: 36px;
     }
   }
   @media only screen and (max-width: 900px) {

@@ -1,0 +1,15 @@
+.backImg {
+    
+      background-image:url('../public/assets/coverImage_1.jpg');
+        background-size:cover;
+        background-repeat:no-repeat;
+        height: 100vh;
+        background-position: center;
+        
+        }
+        @media only screen and (max-width: 768px) { 
+            .backImg{
+            background-size: 'contain';
+            background-position: 'top';
+            }
+        }

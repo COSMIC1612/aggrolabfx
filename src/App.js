@@ -1,34 +1,28 @@
 import TopBar from "./scenes/global/TopBar";
+import classes from "./App.module.css";
 import Box from "@mui/material/Box";
-import Home from "./scenes/Home/Home"; 
-import { ColorModeContext,useMode } from "./theme";
+import Home from "./scenes/Home/Home";
+import { ColorModeContext, useMode } from "./theme";
 import CssBaseline from "@mui/material/CssBaseline";
-import {ThemeProvider} from "@mui/material/styles"
+import { ThemeProvider } from "@mui/material/styles";
+import {Routes,Route} from "react-router-dom";
+import SignUp from "./components/SignUp/SignUp";
 function App() {
-  const [theme , colorMode]= useMode()
+  const [theme, colorMode] = useMode();
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <Box
-      style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL + './assets/coverImage_1.jpg'})`,
-        backgroundSize:'cover',
-        backgroundRepeat:'no-repeat',
-        height: '100vh',
-        backgroundPosition: 'center',
-        '@media (maxWidth: 768px)': {
-          backgroundSize: 'contain',
-          backgroundPosition: 'top',
-        },
-      }}
-    >
-        <div className="app">
-          <main className="content">
-            <TopBar/>
-            <Home/>
-          </main>
-        </div>
+        <CssBaseline />
+        <Box className={classes.backImg}>
+          <div className="app">
+            <main className="content">
+              <TopBar />
+              <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/SignUp" element={<SignUp/>} />
+              </Routes>
+            </main>
+          </div>
         </Box>
       </ThemeProvider>
     </ColorModeContext.Provider>

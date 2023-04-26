@@ -14,6 +14,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import { useNavigate } from "react-router-dom";
 
 import {ColorModeContext, tokens } from "../../theme";
 import { useTheme } from '@mui/material/styles';
@@ -22,7 +23,7 @@ const pages = ["About", "Markets", "Blog & News"];
 /* const settings = ["Profile", "Account", "Dashboard", "Logout"]; */
 
 const TopBar = () => {
-    
+const navigate = useNavigate();
 const theme = useTheme();
 const colors = tokens(theme.palette.mode); 
 const colorMode = useContext(ColorModeContext);
@@ -74,7 +75,6 @@ const colorMode = useContext(ColorModeContext);
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="`${colors.grey[100]}`"
             >
               <MenuIcon />
             </IconButton>
@@ -126,7 +126,7 @@ const colorMode = useContext(ColorModeContext);
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 1.5, mx:1.3, color: "white", display: "block",fontSize:"21px" ,color:`${colors.grey[100]}`}}
+                sx={{ my: 1.5, mx:1.3, display: "block",fontSize:"21px" ,color:`${colors.grey[100]}`}}
               >
                 {page}
               </Button>
@@ -134,7 +134,13 @@ const colorMode = useContext(ColorModeContext);
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          <Button style={{backgroundColor:`${colors.blueAccent[600]}`,fontSize:"16px",color:`${colors.grey[100]}`}} variant="contained">Register now</Button>
+          <Button
+          style={{backgroundColor:`${colors.blueAccent[600]}`,color:`${colors.grey[100]}`}}
+          className={classes.register}
+          onClick={()=> {navigate("/SignUp")}}
+          >
+            Register now
+          </Button>
 
            {/*  <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

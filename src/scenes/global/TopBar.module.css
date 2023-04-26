@@ -1,3 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@700&display=swap');
-
-  
+.register{
+    font-size: 1rem !important ;
+}
+@media only screen and (max-width: 972px) {
+    .register{
+      font-size: 14px;
+    }
+  }
