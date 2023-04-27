@@ -1,7 +1,16 @@
 .grid-container {
   animation: slide-in 2s ease-out;
 }
-
+.paper{
+  padding: 20px;
+   height: 50vh;
+  border-radius: 5% !important;
+}
+@media only screen and (max-width: 1600px) {
+  .paper{
+    height: 60vh;
+  }
+}
 @keyframes slide-in {
   from {
     opacity: 0;

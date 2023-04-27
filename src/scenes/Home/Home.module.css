@@ -82,6 +82,11 @@
       filter: blur(0);
     }
   }
+  @media only screen and (max-width: 1600px) {
+    .home h1{
+      font-size: 42px;
+    }
+  }
 
   @media only screen and (max-width: 1300px) {
     .home h1{

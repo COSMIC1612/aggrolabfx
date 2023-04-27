@@ -1,6 +1,6 @@
 .signUp{
     padding: 20px;
-    height: 60vh;
+    height: 40vh;
     border-radius: 2% !important;
     
 }
@@ -20,5 +20,10 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+  @media only screen and (max-width: 1600px) {
+    .signUp{
+      height: 47vh;
     }
   }

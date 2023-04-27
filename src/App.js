@@ -5,7 +5,7 @@ import Home from "./scenes/Home/Home";
 import { ColorModeContext, useMode } from "./theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import {Routes,Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import SignUp from "./components/SignUp/SignUp";
 function App() {
   const [theme, colorMode] = useMode();
@@ -18,8 +18,8 @@ function App() {
             <main className="content">
               <TopBar />
               <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/SignUp" element={<SignUp/>} />
+                <Route path="/" element={<Home />} />
+                <Route path="/SignUp" element={<SignUp />} />
               </Routes>
             </main>
           </div>

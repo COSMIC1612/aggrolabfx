@@ -2,7 +2,22 @@ import { Avatar, Grid, Paper, useTheme, TextField,FormControlLabel,Checkbox,Butt
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import classes from "./SignUp.module.css";
 import { tokens } from "../../theme";
+import  React,{ useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../../firebase";
 const SignUp = () => {
+    const [email,setEmail]=useState('');
+    const [password,setPassword]=useState('');
+    const emailHandler=(event)=>{
+        setEmail(event.target.value);
+    }
+    const passwordHandler=(event)=>{
+        setPassword(event.target.value);
+    }
+    const submitHandler =(event)=>{
+      event.preventDefault();
+      createUserWithEmailAndPassword(auth,email,password).then((userCredential)=>console.log(userCredential)).catch((error)=>console.log(error));
+    }
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const avatarStyle ={backgroundColor:`${colors.greenAccent[400]}`};
@@ -14,7 +29,7 @@ const SignUp = () => {
     fontSize: "14px",
   };
   return (
-    <Grid className={classes["signUp-Grid"]}>
+    <form className={classes["signUp-Grid"]} onSubmit={submitHandler}>
       <Paper className={classes.signUp}>
         <Grid align="center">
           <Avatar style={avatarStyle}>
@@ -23,34 +38,22 @@ const SignUp = () => {
           <h2 style={textStyle}>Claim your free Account !</h2>
         </Grid>
         <TextField
-          color="secondary"
-          label="Username"
-          placeholder="Enter username"
-          fullWidth
-          required
-        />
-        <TextField
+        value={email}
+        onChange={emailHandler}
         style={margin}
           color="secondary"
           label="Email"
           placeholder="Enter email"
-          type="Email"
+          type="email"
           fullWidth
           required
         />
         <TextField
+        value={password}
+        onChange={passwordHandler}
           color="secondary"
           label="Password"
           placeholder="Enter password"
-          type="password"
-          fullWidth
-          required
-        />
-        <TextField
-        style={margin}
-          color="secondary"
-          label="Confirm Password"
-          placeholder="Confirm Password"
           type="password"
           fullWidth
           required
@@ -64,7 +67,7 @@ const SignUp = () => {
           Create your Account
         </Button>
       </Paper>
-    </Grid>
+    </form>
   );
 };
 export default SignUp;
