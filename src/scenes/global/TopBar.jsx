@@ -29,7 +29,7 @@ const colorMode = useContext(ColorModeContext);
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-
+  
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -44,6 +44,18 @@ const colorMode = useContext(ColorModeContext);
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const handleCloseNews = () =>{
+    handleCloseNavMenu();
+    navigate("/News");
+  };
+  const handleCloseAbout =()=>{
+    handleCloseNavMenu();
+    navigate("/About");
+  }
+  const handleCloseMarkets =()=>{
+    handleCloseNavMenu();
+    navigate("/Markets");
+  }
 
   return (
     <AppBar position="static" style={{backgroundColor:`${colors.primary[800]}`,}}>
@@ -95,11 +107,15 @@ const colorMode = useContext(ColorModeContext);
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu} >
-                  <Typography textAlign="center" sx={{fontWeight:700,}} >{page}</Typography>
+                <MenuItem key={pages[0]} onClick={handleCloseAbout} >
+                  <Typography textAlign="center" sx={{fontWeight:600}} >{pages[0]}</Typography>
                 </MenuItem>
-              ))}
+                <MenuItem key={pages[1]} onClick={handleCloseMarkets} >
+                  <Typography textAlign="center" sx={{fontWeight:600}} >{pages[1]}</Typography>
+                </MenuItem>
+                <MenuItem key={pages[2]} onClick={handleCloseNews} >
+                  <Typography textAlign="center" sx={{fontWeight:600}} >{pages[2]}</Typography>
+                </MenuItem>
             </Menu>
           </Box>
           
@@ -121,15 +137,27 @@ const colorMode = useContext(ColorModeContext);
             AggrolabFX
           </Typography>
           <Box sx={{ flexGrow: 1, display:{ xs: "none", md:"flex" },justifyContent:'center'}}>
-            {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={pages[0]}
+                onClick={handleCloseAbout}
                 sx={{ my: 1.5, mx:1.3, display: "block",fontSize:"21px" ,color:`${colors.grey[100]}`}}
               >
-                {page}
+                {pages[0]}
               </Button>
-            ))}
+              <Button
+                key={pages[1]}
+                onClick={handleCloseMarkets}
+                sx={{ my: 1.5, mx:1.3, display: "block",fontSize:"21px" ,color:`${colors.grey[100]}`}}
+              >
+                {pages[1]}
+              </Button>
+              <Button
+                key={pages[2]}
+                onClick={handleCloseNews}
+                sx={{ my: 1.5, mx:1.3, display: "block",fontSize:"21px" ,color:`${colors.grey[100]}`}}
+              >
+                {pages[2]}
+              </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

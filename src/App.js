@@ -7,6 +7,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { Routes, Route } from "react-router-dom";
 import SignUp from "./components/SignUp/SignUp";
+import News from "./scenes/News/News";
+import Markets from "./scenes/Markets/Markets";
+import About from "./scenes/About/About";
 function App() {
   const [theme, colorMode] = useMode();
   return (
@@ -20,6 +23,9 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/SignUp" element={<SignUp />} />
+                <Route path="/About" element={<About />} />
+                <Route path="/Markets" element={<Markets/>} />
+                <Route path="/News" element={<News/>} />
               </Routes>
             </main>
           </div>
