@@ -5,10 +5,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { tokens } from "../../theme";
+import { useTheme } from "@emotion/react";
 
 function GoodNews() {
   const [news, setNews] = useState([]);
-
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   useEffect(() => {
     fetch(
       "https://gnews.io/api/v4/search?q=forex&lang=en&country=us&max=10&token=2b2b072f52f77bb1ec7b064a95639f6b"
@@ -59,7 +62,11 @@ function GoodNews() {
           >
             <Button href={article.url} target="_blank" size="small">
               <h2
-                style={{ alignItems: "flex-end", justifyContent: "flex-end" }}
+                style={{
+                  alignItems: "flex-end",
+                  justifyContent: "flex-end",
+                  color: `${colors.grey[400]}`,
+                }}
               >
                 Read More
               </h2>
