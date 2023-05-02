@@ -53,7 +53,7 @@ const colorMode = useContext(ColorModeContext);
     <AppBar position="static" style={{backgroundColor:`${colors.primary[800]}`,}}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters >
-          
+          <img src="./logo512.png" alt="pictured" className={classes.logo}/>
           <Typography
             variant="h1"
             noWrap
