@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import classes from "./Login.module.css";
 import Grid from "@mui/material/Grid";
@@ -15,21 +15,21 @@ import Checkbox from "@mui/material/Checkbox";
 import { useTheme } from "@emotion/react";
 import { tokens } from "../../theme";
 const Login = () => {
-    const [email,setEmail]=useState('');
-    const [password,setPassword]=useState('');
-    const emailHandler =(event)=>{
-        setEmail(event.target.value);
-    }
-    const passwordHandler =(event)=>{
-        setPassword(event.target.value);
-    }
-    const submitHandler =(event)=>{
-        event.preventDefault();
-        signInWithEmailAndPassword(auth,email,password).then((userCredential)=>console.log(userCredential)).catch((error)=>console.log(error));
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const emailHandler = (event) => {
+    setEmail(event.target.value);
+  };
+  const passwordHandler = (event) => {
+    setPassword(event.target.value);
+  };
+  const submitHandler = (event) => {
+    event.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => console.log(userCredential))
+      .catch((error) => console.log(error));
+  };
 
-
-    }
-    
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const avatarStyle = { backgroundColor: `${colors.greenAccent[400]}` };
@@ -41,7 +41,7 @@ const Login = () => {
   };
   return (
     <form className={classes["grid-container"]} onSubmit={submitHandler}>
-      <Paper style={{ }} className={classes.paper}>
+      <Paper style={{}} className={classes.paper}>
         <Grid align="center">
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />
@@ -50,8 +50,27 @@ const Login = () => {
             Sign in now and explore your trading options !
           </h2>
         </Grid>
-        <TextField color="secondary" label='Email' placeholder='Enter email' type='email' value={email} onChange={emailHandler} fullWidth required/>
-        <TextField color="secondary" style={{margin:"20px 0px"}} label='Password' placeholder='Enter password' type='password' value={password} onChange={passwordHandler} fullWidth required/>
+        <TextField
+          color="secondary"
+          label="Email"
+          placeholder="Enter email"
+          type="email"
+          value={email}
+          onChange={emailHandler}
+          fullWidth
+          required
+        />
+        <TextField
+          color="secondary"
+          style={{ margin: "20px 0px" }}
+          label="Password"
+          placeholder="Enter password"
+          type="password"
+          value={password}
+          onChange={passwordHandler}
+          fullWidth
+          required
+        />
         <FormControlLabel
           control={<Checkbox name="checkedB" color="secondary" />}
           label="Remember me"
