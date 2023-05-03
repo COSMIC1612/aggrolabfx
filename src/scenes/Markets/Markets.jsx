@@ -63,22 +63,8 @@ const Markets = () => {
           paper_bgcolor: colors.primary[800],
         }}
       />
-      <Grid container spacing={2}>
-      <Grid item xs={3} className={classes.item}>
-        <Button
-        style={{
-          backgroundColor: `${colors.blueAccent[600]}`,
-          color: `${colors.grey[100]}`,
-          width:"100%",
-          height:"100%",
-          fontSize:"20px",
-        }}
-        onClick={()=>setPeriod('daily')}
-      >
-        intraday
-      </Button>
-        </Grid>
-        <Grid item xs={3} className={classes.item}>
+      <Grid  container spacing={2} className={classes["container-btn"]}>
+        <Grid item xs={4} className={classes.item}>
         <Button
         style={{
           backgroundColor: `${colors.blueAccent[600]}`,
@@ -92,7 +78,7 @@ const Markets = () => {
         daily
       </Button>
         </Grid>
-        <Grid item xs={3} className={classes.item}>
+        <Grid item xs={4} className={classes.item}>
         <Button
         style={{
           backgroundColor: `${colors.blueAccent[600]}`,
@@ -106,7 +92,7 @@ const Markets = () => {
         weekly
       </Button>
         </Grid>
-        <Grid item xs={3} className={classes.item}>
+        <Grid item xs={4} className={classes.item}>
         <Button
         style={{
           backgroundColor: `${colors.blueAccent[600]}`,

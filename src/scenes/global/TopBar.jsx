@@ -67,6 +67,7 @@ const colorMode = useContext(ColorModeContext);
               color: `${colors.blueAccent[500]}`,
               textDecoration: "none",
             }}
+            
           >
             AggrolabFX
           </Typography>
@@ -125,6 +126,8 @@ const colorMode = useContext(ColorModeContext);
               color: `${colors.blueAccent[500]}`,
               textDecoration: "none",
             }}
+            className={classes["name-mobile"]}
+            
           >
             AggrolabFX
           </Typography>
@@ -152,7 +155,7 @@ const colorMode = useContext(ColorModeContext);
               </Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0,display:"flex" }}>
           <Button
           style={{backgroundColor:`${colors.blueAccent[600]}`,color:`${colors.grey[100]}`}}
           className={classes.register}
