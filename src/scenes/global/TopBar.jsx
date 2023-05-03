@@ -67,6 +67,7 @@ const colorMode = useContext(ColorModeContext);
               color: `${colors.blueAccent[500]}`,
               textDecoration: "none",
             }}
+            className={classes["name-laptop"]}
             
           >
             AggrolabFX
@@ -116,7 +117,7 @@ const colorMode = useContext(ColorModeContext);
             variant="h2"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
