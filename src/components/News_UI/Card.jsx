@@ -7,31 +7,45 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { tokens } from "../../theme";
 import { useTheme } from "@emotion/react";
+import axios from "axios";
+import Loading from "../Loading/Loading";
 
 function GoodNews() {
   const [news, setNews] = useState([]);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [loading,setLoading]=useState(true);
   useEffect(() => {
-    fetch(
-      "https://gnews.io/api/v4/search?q=forex&lang=en&country=us&max=10&token=2b2b072f52f77bb1ec7b064a95639f6b"
-    )
-      .then((response) => response.json())
-      .then((data) => setNews(data.articles.slice(0, 3)));
-  }, []);
+    const fetchData = async ()=>{
+      try{
+        const response =await axios.get("https://gnews.io/api/v4/search?q=forex&lang=en&country=us&max=10&token=2b2b072f52f77bb1ec7b064a95639f6b");
+        setLoading(false);
+        const data = response.data;
+        setNews(data.articles.slice(0,8));
+      }
+      catch(error){
+        console.log(error);
+        setLoading(false);
+      }
+    }
+      fetchData();
+    }, []);
 
   return (
     <div
       style={{
         display: "flex",
+        justifyContent:"center",
+        alignItems:"center",
         flexWrap: "wrap",
         gap: "100px",
-        marginTop: "150px",
-        marginLeft: "150px",
+        margin: "20px ",
+        
       }}
     >
-      {news.map((article) => (
-        <Card sx={{ maxWidth: 345, borderRadius: "20px" }} key={article.url}>
+      {loading ? <Loading/> 
+      : news.map((article) => (
+        <Card sx={{ maxWidth: "350px", borderRadius: "20px" }} key={article.url}>
           <CardMedia
             sx={{ height: 140, borderRadius: "20px 20px 0 0" }}
             image={article.image}
@@ -44,7 +58,7 @@ function GoodNews() {
               flexGrow: 1,
             }}
           >
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5" component="div" style={{color:`${colors.blueAccent[500]}`}}>
               {article.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
@@ -54,10 +68,8 @@ function GoodNews() {
           <CardActions
             sx={{
               display: "flex",
-              marginTop: "auto",
-              marginLeft: "auto",
-              marginRight: "16px",
-              textAlign: "right",
+              justifyContent:"center",
+              alignItems:"center",
             }}
           >
             <Button href={article.url} target="_blank" size="small">
@@ -65,7 +77,7 @@ function GoodNews() {
                 style={{
                   alignItems: "flex-end",
                   justifyContent: "flex-end",
-                  color: `${colors.grey[400]}`,
+                  color: `${colors.greenAccent[500]}`,
                 }}
               >
                 Read More
