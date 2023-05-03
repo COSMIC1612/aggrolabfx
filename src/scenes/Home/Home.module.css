@@ -112,11 +112,11 @@
 }
 @media only screen and (max-width: 450px) {
   .home h1 {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 @media only screen and (max-width: 400px) {
   .home h1 {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
