@@ -1,5 +1,6 @@
 .grid-container {
   animation: slide-in 2s ease-out;
+  margin:0px 10px;
 }
 .paper{
   padding: 20px;

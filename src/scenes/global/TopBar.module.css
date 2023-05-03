@@ -30,7 +30,7 @@
 }
 @media screen and (max-width:450px){
   .name-mobile{
-    font-size:10px !important;
+    font-size:12px !important;
   }
   .register{
     font-size: 8px !important;

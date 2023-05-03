@@ -46,7 +46,7 @@ const Login = () => {
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />
           </Avatar>
-          <h2 style={{ color: `${colors.greenAccent[400]}` }}>
+          <h2 style={{ color: `${colors.greenAccent[400]}` }} className={classes["login-text"]}>
             Sign in now and explore your trading options !
           </h2>
         </Grid>
