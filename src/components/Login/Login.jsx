@@ -14,9 +14,17 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { useTheme } from "@emotion/react";
 import { tokens } from "../../theme";
+import { useNavigate } from "react-router-dom";
+import { loginSuccess,loginStart,loginFailure } from "../../redux/authSlice";
+import { useDispatch,useSelector } from "react-redux";
+import Loading from "../Loading/Loading";
 const Login = () => {
+  const error=useSelector((state)=>state.auth.error);
+  const loading=useSelector((state)=>state.auth.loading);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const emailHandler = (event) => {
     setEmail(event.target.value);
   };
@@ -25,9 +33,20 @@ const Login = () => {
   };
   const submitHandler = (event) => {
     event.preventDefault();
+    dispatch(loginFailure(null));
+    dispatch(loginStart());
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => console.log(userCredential))
-      .catch((error) => console.log(error));
+      .then((userCredential) => {
+        const user={"displayName":userCredential.user.displayName,
+                    "email":userCredential.user.email};
+        console.log(user);
+        dispatch(loginSuccess(user));
+        navigate("/home");
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(loginFailure("Invalid email or password. Please try again."));
+      });
   };
 
   const theme = useTheme();
@@ -41,7 +60,8 @@ const Login = () => {
   };
   return (
     <form className={classes["grid-container"]} onSubmit={submitHandler}>
-      <Paper style={{}} className={classes.paper}>
+      {!loading ?
+      (<Paper style={{}} className={classes.paper}>
         <Grid align="center">
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />
@@ -75,34 +95,26 @@ const Login = () => {
           control={<Checkbox name="checkedB" color="secondary" />}
           label="Remember me"
         />
+        {error && <Typography color="error">{error}</Typography>}
         <Button type="submit" variant="contained" style={btnstyle} fullWidth>
           Sign in
         </Button>
-        <Typography>
-          <Link
-            href="#"
-            style={{
-              color: `${colors.greenAccent[500]}`,
-              textDecoration: "none",
-            }}
-          >
-            Forgot password ?
-          </Link>
-        </Typography>
         <Typography style={{ margin: "10px 0px" }}>
           Do you have an account ?
           <Link
-            href="#"
+            onClick={()=>navigate("/SignUp")}
             style={{
               color: `${colors.greenAccent[500]}`,
               marginLeft: "10px",
               textDecoration: "none",
+              cursor:"pointer",
             }}
           >
             Sign Up
           </Link>
         </Typography>
-      </Paper>
+      </Paper>) : <Loading/>
+}
     </form>
   );
 };

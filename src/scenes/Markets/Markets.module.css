@@ -4,7 +4,7 @@
   padding: 10px;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  /* height: 80vh; */
   margin: 20px;
 }
 .container-btn{
@@ -31,46 +31,14 @@
   }
 }
 
-
-/* @media screen and (min-width: 481px) and (max-width: 768px) {
-    .container {
-      flex-direction: column;
-      height: auto;
-      padding: 10px;
-      margin: 10px;
-    }
-  
-    .plot {
-      height: 60vh;
-      width: 100%;
-    }
+.widget-options{
+  margin: 20px 0px;
+  width:1100px;
+   height:715px;
+}
+@media screen and (max-width: 1150px){
+  .widget-options{
+    width: 350px;
+    height:350px ;
   }
-  
-  @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .container {
-      flex-direction: row;
-      height: 60vh;
-      padding: 20px;
-      margin: 20px;
-    }
-  
-    .plot {
-      height: 100%;
-      width: 50%;
-    }
-  }
-  
-  @media screen and (min-width: 1025px) {
-    .container {
-      flex-direction: row;
-      height: 70vh;
-      padding: 20px;
-      margin: 20px;
-    }
-  
-    .plot {
-      height: 100%;
-      width: 50%;
-    }
-  }
-    */
+}
