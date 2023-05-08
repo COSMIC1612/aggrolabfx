@@ -22,12 +22,13 @@ import { useTheme } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/authSlice";
+import { openDash } from "../../redux/dashboardSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 
 
-const pages = ["About", "Markets", "Blog & News"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["About", "Dashboard","Markets", "Blog & News"];
+const settings = ["Profile", "Settings", "Logout"];
 
 const TopBar = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -66,6 +67,10 @@ const TopBar = () => {
     handleCloseNavMenu();
     navigate("/Markets");
   };
+  const handleCloseDashboard=()=>{
+    handleCloseUserMenu();
+    dispatch(openDash());
+  }
   const handleLogout = () => {
     handleCloseUserMenu();
     dispatch(logout());
@@ -132,16 +137,23 @@ const TopBar = () => {
                   {pages[0]}
                 </Typography>
               </MenuItem>
-              {isLoggedIn &&
-                <MenuItem key={pages[1]} onClick={handleCloseMarkets}>
+              {isLoggedIn &&( 
+                <MenuItem key={pages[1]} onClick={handleCloseDashboard}>
                   <Typography textAlign="center" sx={{ fontWeight: 600 }}>
                     {pages[1]}
                   </Typography>
-                </MenuItem>
-              }
-              <MenuItem key={pages[2]} onClick={handleCloseNews}>
+                </MenuItem> )}
+                {isLoggedIn &&( 
+                <MenuItem key={pages[2]} onClick={handleCloseMarkets}>
                 <Typography textAlign="center" sx={{ fontWeight: 600 }}>
                   {pages[2]}
+                </Typography>
+              </MenuItem> )}
+              
+              
+              <MenuItem key={pages[3]} onClick={handleCloseNews}>
+                <Typography textAlign="center" sx={{ fontWeight: 600 }}>
+                  {pages[3]}
                 </Typography>
               </MenuItem>
             </Menu>
@@ -186,10 +198,10 @@ const TopBar = () => {
               {pages[0]}
             </Button>
             
-            {isLoggedIn &&
+            {isLoggedIn && (
               <Button
                 key={pages[1]}
-                onClick={handleCloseMarkets}
+                onClick={handleCloseDashboard}
                 sx={{
                   my: 1.5,
                   mx: 1.3,
@@ -199,10 +211,24 @@ const TopBar = () => {
                 }}
               >
                 {pages[1]}
-              </Button>
-            }
+              </Button> )}
+              {isLoggedIn && (
+              <Button
+                key={pages[2]}
+                onClick={handleCloseMarkets}
+                sx={{
+                  my: 1.5,
+                  mx: 1.3,
+                  display: "block",
+                  fontSize: "21px",
+                  color: `${colors.grey[100]}`,
+                }}
+              >
+                {pages[2]}
+              </Button> )}
+            
             <Button
-              key={pages[2]}
+              key={pages[3]}
               onClick={handleCloseNews}
               sx={{
                 my: 1.5,
@@ -212,7 +238,7 @@ const TopBar = () => {
                 color: `${colors.grey[100]}`,
               }}
             >
-              {pages[2]}
+              {pages[3]}
             </Button>
           </Box>
 
@@ -262,11 +288,8 @@ const TopBar = () => {
                   <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{settings[1]}</Typography>
                   </MenuItem>
-                  <MenuItem key={settings[2]} onClick={handleCloseUserMenu}>
+                  <MenuItem key={settings[2]} onClick={handleLogout}>
                     <Typography textAlign="center">{settings[2]}</Typography>
-                  </MenuItem>
-                  <MenuItem key={settings[3]} onClick={handleLogout}>
-                    <Typography textAlign="center">{settings[3]}</Typography>
                   </MenuItem>
                 </Menu>
               </>

@@ -1,4 +1,5 @@
 import TopBar from "./scenes/global/TopBar";
+import React from "react";
 import classes from "./App.module.css";
 import Box from "@mui/material/Box";
 import LandingPage from "./scenes/LandingPage/LandingPage";
@@ -15,38 +16,46 @@ import ProtectedRoute from "./Routes/ProtectedRoute";
 import { useEffect } from "react";
 import { browserSessionPersistence, setPersistence } from "firebase/auth";
 import { auth } from "./firebase";
+import { BrowserRouter } from "react-router-dom";
 function App() {
   const [theme, colorMode] = useMode();
-  useEffect(()=>{
-    setPersistence(auth,browserSessionPersistence)
-    .then(()=>console.log("browser persistant"))
-    .catch((error)=>console.log(error));
-  }
-  ,[])
+  useEffect(() => {
+    setPersistence(auth, browserSessionPersistence)
+      .then(() => console.log("browser persistant"))
+      .catch((error) => console.log(error));
+  }, []);
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Box className={classes.backImg}>
-          <div className="app">
-            <main className="content">
-              <TopBar />
-              <Routes>
-                <Route
-                  path="/"
-                  element={<ProtectedRoute><Home/></ProtectedRoute>}
-                />
-                <Route path="/Login" element={<LandingPage />} />
-                <Route path="/SignUp" element={<SignUp />} />
-                <Route path="/About" element={<About />} />
-                <Route path="/Markets" element={<Markets />} />
-                <Route path="/News" element={<News />} />
-              </Routes>
-            </main>
-          </div>
-        </Box>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+    <React.StrictMode>
+      <BrowserRouter>
+            <ColorModeContext.Provider value={colorMode}>
+              <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Box className={classes.backImg}>
+                  <div className="app">
+                    <main className="content">
+                      <TopBar />
+                      <Routes>
+                        <Route
+                          path="/"
+                          element={
+                            <ProtectedRoute>
+                              <Home />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route path="/Login" element={<LandingPage />} />
+                        <Route path="/SignUp" element={<SignUp />} />
+                        <Route path="/About" element={<About />} />
+                        <Route path="/Markets" element={<Markets />} />
+                        <Route path="/News" element={<News />} />
+                      </Routes>
+                    </main>
+                  </div>
+                </Box>
+              </ThemeProvider>
+            </ColorModeContext.Provider>
+      </BrowserRouter>
+    </React.StrictMode>
   );
 }
 
