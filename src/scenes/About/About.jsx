@@ -1,18 +1,26 @@
-
+const About =()=>{
+  return (<div>About!!</div>);
+}
+export default About;
+/* 
 import React from "react";
-import { Card, CardContent, Typography, Grid, styled } from "@mui/material";
+import Card from "@mui/material/Card";
+import Typography from "@mui/material";
+import Grid from "@mui/material";
+import CardContent from "@mui/material";
 import { tokens } from "../../theme";
 import { useTheme } from "@emotion/react";
+import styled from "@mui/material";
 
 const Section = styled(Grid)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const Heading = styled(Typography)({
+/* const Heading = styled(Typography)({
   fontWeight: "bold",
   marginBottom: (theme) => theme.spacing(2),
   fontSize: 40,
-});
+}); 
 const CardHeading = styled(Typography)({
   fontWeight: "bold",
   marginBottom: (theme) => theme.spacing(2),
@@ -187,7 +195,7 @@ function About() {
         </Card>
       </Grid>
     </Section>
-  );
-}
+  ); */
 
-export default About;
+
+

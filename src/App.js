@@ -11,8 +11,18 @@ import News from "./scenes/News/News";
 import Markets from "./scenes/Markets/Markets";
 import About from "./scenes/About/About";
 import Home from "./scenes/Home/Home";
+import ProtectedRoute from "./Routes/ProtectedRoute";
+import { useEffect } from "react";
+import { browserSessionPersistence, setPersistence } from "firebase/auth";
+import { auth } from "./firebase";
 function App() {
   const [theme, colorMode] = useMode();
+  useEffect(()=>{
+    setPersistence(auth,browserSessionPersistence)
+    .then(()=>console.log("browser persistant"))
+    .catch((error)=>console.log(error));
+  }
+  ,[])
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
@@ -22,12 +32,15 @@ function App() {
             <main className="content">
               <TopBar />
               <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/Home" element={<Home/>} />
+                <Route
+                  path="/"
+                  element={<ProtectedRoute><Home/></ProtectedRoute>}
+                />
+                <Route path="/Login" element={<LandingPage />} />
                 <Route path="/SignUp" element={<SignUp />} />
                 <Route path="/About" element={<About />} />
-                <Route path="/Markets" element={<Markets/>} />
-                <Route path="/News" element={<News/>} />
+                <Route path="/Markets" element={<Markets />} />
+                <Route path="/News" element={<News />} />
               </Routes>
             </main>
           </div>

@@ -41,7 +41,7 @@ const Login = () => {
                     "email":userCredential.user.email};
         console.log(user);
         dispatch(loginSuccess(user));
-        navigate("/home");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

@@ -1,20 +1,28 @@
 import { configureStore } from '@reduxjs/toolkit';
-import logger from 'redux-logger';
 import rootReducer from './rootReducer';
-import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
-import {logout,loginSuccess} from "./authSlice"
+import storage from 'redux-persist/lib/storage';
+import persistReducer from 'redux-persist/es/persistReducer';
+import { FLUSH,REHYDRATE,PAUSE,PERSIST,PURGE,REGISTER } from 'redux-persist';
+import logger from 'redux-logger';
+
+
+const persistConfig={
+  key:"root",
+  version:1,
+  storage
+};
+
+const persistedReducer=persistReducer(persistConfig,rootReducer)
+
 
 const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  reducer: persistedReducer,
+  middleware:(getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }).concat(logger),
 });
-onAuthStateChanged(auth,(user)=>{
-  if(user){
-    store.dispatch(loginSuccess())
-  }
-  else{
-    store.dispatch(logout())
-  }
-})
+
 export default store;

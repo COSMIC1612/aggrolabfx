@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { loginFailure, loginStart, loginSuccess } from "../../redux/authSlice";
+import Loading from "../Loading/Loading";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -34,6 +35,7 @@ const SignUp = () => {
   const [userName,setUserName]=useState("");
   const [open, setOpen] = useState(false);
   const error = useSelector((state)=>state.auth.error);
+  const loading = useSelector((state)=>state.auth.loading);
   const emailHandler = (event) => {
     setEmail(event.target.value);
   };
@@ -49,8 +51,8 @@ const SignUp = () => {
     dispatch(loginStart());
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential);
-        updateProfile(userCredential.user,{displayName:userName});
+        console.log(userCredential.user);
+        updateProfile(userCredential.user,{displayName:userName}).then(()=>console.log("account created !!!")).catch((error)=>console.log(error));
         const user = {
           "displayName":userCredential.user.displayName,
           "email":userCredential.user.email,
@@ -58,7 +60,7 @@ const SignUp = () => {
         dispatch(loginSuccess(user));
         setOpen(true);
         setTimeout(() => {
-          navigate("/Markets");
+          navigate("/");
         }, 3000);
         
       })
@@ -96,6 +98,7 @@ const SignUp = () => {
   return (
     <>
       <form className={classes["signUp-Grid"]} onSubmit={submitHandler}>
+        {!loading ?(
         <Paper className={classes.signUp}>
           <Grid align="center">
             <Avatar style={avatarStyle}>
@@ -159,7 +162,8 @@ const SignUp = () => {
             Sign In
           </Link>
         </Typography>
-        </Paper>
+        </Paper>) :
+        <Loading/>}
       </form>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
