@@ -261,8 +261,8 @@ const TopBar = () => {
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
-                      alt="Aemy Sharp"
-                      src="/static/images/avatar/2.jpg"
+                      alt="user"
+                      src="/assets/images/avatars/avatar_default.jpg"
                     />
                   </IconButton>
                 </Tooltip>

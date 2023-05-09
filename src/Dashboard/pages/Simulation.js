@@ -9,7 +9,7 @@ import {
   Stack,
   Paper,
   /* Avatar, */
-  /* Button, */
+  Button,
  /*  Popover, */
   /* Checkbox, */
   TableRow,
@@ -24,7 +24,7 @@ import {
 } from '@mui/material';
 // components
 import Label from '../components/label';
-/* import Iconify from '../components/iconify'; */
+import Iconify from '../components/iconify';
 import Scrollbar from '../components/scrollbar';
 // sections
 import { UserListHead, /* UserListToolbar */ } from '../sections/@dashboard/user';
@@ -149,7 +149,7 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> Options | AggrolabFX </title>
+        <title> Simulation | AggrolabFX </title>
       </Helmet>
 
       <Container>
@@ -157,9 +157,12 @@ export default function UserPage() {
           <Typography variant="h4" gutterBottom>
             Options
           </Typography>
-          {/* <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
-            New User
-          </Button> */}
+          <Button variant="contained" startIcon={<Iconify icon="icon-park-outline:buy" />}>
+            Buy Option
+          </Button>
+          <Button variant="contained" startIcon={<Iconify icon="ep:sell" />}>
+            Sell Option
+          </Button>
         </Stack>
 
         <Card>

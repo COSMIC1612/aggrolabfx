@@ -54,7 +54,7 @@ const SignUp = () => {
         console.log(userCredential.user);
         updateProfile(userCredential.user,{displayName:userName}).then(()=>console.log("account created !!!")).catch((error)=>console.log(error));
         const user = {
-          "displayName":userCredential.user.displayName,
+          "displayName":userName,
           "email":userCredential.user.email,
         }
         dispatch(loginSuccess(user));
