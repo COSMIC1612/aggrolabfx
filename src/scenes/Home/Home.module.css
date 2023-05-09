@@ -10,14 +10,10 @@
     --speed: 500ms;
   }
   
-  * {
+ /*  * {
     box-sizing: border-box;
-  }
+  } */
   
-  body {
-    overflow: hidden;
-    margin: 0;
-  }
   
   .container {
     height: 100vh;

@@ -1,13 +1,13 @@
-/* import { useSelector } from "react-redux"; */
-/* const user = useSelector((state)=>state.auth.user)
-    console.log(user) */
-/*  let userName ="";
-    if(user){
-        userName=user.displayName;
-    } */
+
 import { useEffect } from "react";
 import classes from "./Home.module.css";
+import { useDispatch } from "react-redux";
+import { openDash } from "../../redux/dashboardSlice";
 const Home = () => {
+  const dispatch=useDispatch()
+  const handledash=()=>{
+    dispatch(openDash());
+  }
     useEffect(() => {
         const container = document.querySelector(`.${classes.container}`);
         const leftSide = document.querySelector(`.${classes.left}`);
@@ -48,7 +48,7 @@ const Home = () => {
     className={`${classes.split} ${classes.left}`}
       >
         <h1>Markets</h1>
-        <a href="/Markets" className={classes.btn}>
+        <a href="/Markets"  className={classes.btn}>
           Click Here
         </a>
       </div>
@@ -56,7 +56,7 @@ const Home = () => {
       className={`${classes.split} ${classes.right}`} 
       >
         <h1>Dashboard</h1>
-        <a href="/dashboard/app" className={classes.btn}>
+        <a href="/" onClick={handledash} className={classes.btn}>
           Click Here
         </a>
       </div>

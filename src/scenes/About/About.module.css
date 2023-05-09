@@ -16,7 +16,7 @@
 .inner-container{
     width: 50%;
     float: right;
-    padding: 100px;
+    padding: 50px;
     animation: slide-in 1.5s ease-out;
 }
 @keyframes slide-in {

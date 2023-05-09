@@ -6,18 +6,18 @@ import { styled, alpha } from "@mui/material/styles";
 import {
   Box,
   Link,
-  Button,
+  /* Button, */
   Drawer,
   Typography,
   Avatar,
-  Stack,
+  /* Stack, */
 } from "@mui/material";
 // mock
 import Account from "../../../_mock/Account";
 // hooks
 import useResponsive from "../../../hooks/useResponsive";
 // components
-import Logo from "../../../components/logo";
+/* import Logo from "../../../components/logo"; */
 import Scrollbar from "../../../components/scrollbar";
 import NavSection from "../../../components/nav-section";
 //
@@ -65,9 +65,9 @@ export default function Nav({ openNav, onCloseNav }) {
         },
       }}
     >
-      <Box sx={{ px: 2.5, py: 3, display: "inline-flex" }}>
-        <Logo />
-      </Box>
+     { <Box sx={{ px: 2.5, py: 3, display: "inline-flex" }}>
+       {/*  <Logo /> */}
+      </Box>}
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none">
@@ -91,7 +91,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
       <Box sx={{ flexGrow: 1 }} />
 
-      <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
+      {/* <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
         <Stack
           alignItems="center"
           spacing={3}
@@ -120,8 +120,8 @@ export default function Nav({ openNav, onCloseNav }) {
           >
             Upgrade to Pro
           </Button>
-        </Stack>
-      </Box>
+        </Stack> */}
+     {/*  </Box> */}
     </Scrollbar>
   );
 

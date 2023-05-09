@@ -106,8 +106,8 @@ const Markets = () => {
                     xaxis: { title: "Date" },
                     yaxis: {
                       title: "Exchange Rate",
-                      range: [1.100, 1.107], // Set the desired range for the y-axis
-                      dtick: 0.0005, // Specify the desired scale step for the y-axis
+                      range: [1.094, 1.106], // Set the desired range for the y-axis
+                      dtick: 0.001, // Specify the desired scale step for the y-axis
                       zeroline: false, // Hide the zeroline (y-axis at 0)
                       
                     },
