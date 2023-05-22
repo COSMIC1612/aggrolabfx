@@ -70,7 +70,7 @@
   
   .split.left {
     left: 0;
-    background-image: url("../../../public/assets/coverImage_2.jpg");
+    background-image: url("../../../public/assets/coverImage_2.webp");
     background-position: start;
   }
   
@@ -88,7 +88,7 @@
   
   .split.right {
     right: 0;
-    background-image: url("../../../public/assets/coverImage_6.jpg");
+    background-image: url("../../../public/assets/coverImage_6.webp");
     background-position: center;
   }
   
