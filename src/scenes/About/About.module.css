@@ -4,13 +4,10 @@
 .about-section{
     background: url("../../../public/assets/coverImage_4.webp") no-repeat left;
     background-size: 55%;
-    /* background-color: #fdfdfd; */
     overflow: hidden;
     padding: 100px 0;
     min-height: 100vh;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+   
 }
 
 .inner-container{

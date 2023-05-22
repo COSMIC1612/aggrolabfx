@@ -26,8 +26,7 @@ import { openDash } from "../../redux/dashboardSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 
-
-const pages = ["About", "Dashboard","Markets", "Blog & News"];
+const pages = ["About", "Dashboard", "Markets", "Blog & News"];
 const settings = ["Profile", "Settings", "Logout"];
 
 const TopBar = () => {
@@ -67,10 +66,10 @@ const TopBar = () => {
     handleCloseNavMenu();
     navigate("/Markets");
   };
-  const handleCloseDashboard=()=>{
+  const handleCloseDashboard = () => {
     handleCloseUserMenu();
     dispatch(openDash());
-  }
+  };
   const handleLogout = () => {
     handleCloseUserMenu();
     dispatch(logout());
@@ -85,7 +84,7 @@ const TopBar = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src="./logo512.png" alt="pictured" className={classes.logo} />
+          <img src="./logo512.webp" alt="pictured" className={classes.logo} />
           <Typography
             variant="h1"
             noWrap
@@ -137,20 +136,21 @@ const TopBar = () => {
                   {pages[0]}
                 </Typography>
               </MenuItem>
-              {isLoggedIn &&( 
+              {isLoggedIn && (
                 <MenuItem key={pages[1]} onClick={handleCloseDashboard}>
                   <Typography textAlign="center" sx={{ fontWeight: 600 }}>
                     {pages[1]}
                   </Typography>
-                </MenuItem> )}
-                {isLoggedIn &&( 
+                </MenuItem>
+              )}
+              {isLoggedIn && (
                 <MenuItem key={pages[2]} onClick={handleCloseMarkets}>
-                <Typography textAlign="center" sx={{ fontWeight: 600 }}>
-                  {pages[2]}
-                </Typography>
-              </MenuItem> )}
-              
-              
+                  <Typography textAlign="center" sx={{ fontWeight: 600 }}>
+                    {pages[2]}
+                  </Typography>
+                </MenuItem>
+              )}
+
               <MenuItem key={pages[3]} onClick={handleCloseNews}>
                 <Typography textAlign="center" sx={{ fontWeight: 600 }}>
                   {pages[3]}
@@ -197,7 +197,7 @@ const TopBar = () => {
             >
               {pages[0]}
             </Button>
-            
+
             {isLoggedIn && (
               <Button
                 key={pages[1]}
@@ -211,8 +211,9 @@ const TopBar = () => {
                 }}
               >
                 {pages[1]}
-              </Button> )}
-              {isLoggedIn && (
+              </Button>
+            )}
+            {isLoggedIn && (
               <Button
                 key={pages[2]}
                 onClick={handleCloseMarkets}
@@ -225,8 +226,9 @@ const TopBar = () => {
                 }}
               >
                 {pages[2]}
-              </Button> )}
-            
+              </Button>
+            )}
+
             <Button
               key={pages[3]}
               onClick={handleCloseNews}
