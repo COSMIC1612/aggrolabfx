@@ -102,7 +102,7 @@ const Markets = () => {
             layout={
               period === "intraday"
                 ? {
-                    title: `USD/EUR Exchange Rates (${period.toUpperCase()})`,
+                    title: `EUR/USD Exchange Rates (${period.toUpperCase()})`,
                     xaxis: { title: "Date", },
                     yaxis: {
                       title: "Exchange Rate",
