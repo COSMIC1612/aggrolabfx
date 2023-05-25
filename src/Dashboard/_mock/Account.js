@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 
+
 const Account =()=> {
   const user = useSelector((state)=>state.auth.user);
   const accountInfo={

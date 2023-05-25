@@ -4,10 +4,10 @@ import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
 //
 
-import UserPage from './pages/UserPage';
 
 import DashboardAppPage from './pages/DashboardAppPage';
 import Simulation from "./pages/Simulation";
+import ProfileSettings from './pages/ProfileSettings';
 
 // ----------------------------------------------------------------------
 
@@ -19,8 +19,8 @@ export default function Router() {
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
-        { path: 'options', element: <UserPage /> },
         { path: 'simulation', element: <Simulation /> },
+        { path: 'profile', element: <ProfileSettings /> },
        
       ],
     },

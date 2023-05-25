@@ -12,14 +12,14 @@ const navConfig = [
     icon: icon('ic_analytics'),
   },
   {
-    title: 'options',
-    path: '/dashboard/options',
-    icon: icon('ic_user'),
-  },
-  {
     title: 'simulation market',
     path: '/dashboard/simulation',
     icon: icon('ic_user'),
+  },
+  {
+    title: 'profile settings',
+    path: '/dashboard/profile',
+    icon: icon('ic_lock'),
   },
  
 ];

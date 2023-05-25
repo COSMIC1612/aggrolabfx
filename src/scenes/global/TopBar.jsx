@@ -27,7 +27,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 
 const pages = ["About", "Dashboard", "Markets", "Blog & News"];
-const settings = ["Profile", "Settings", "Logout"];
+const settings = ["Profile Settings", "Logout"];
 
 const TopBar = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -70,6 +70,11 @@ const TopBar = () => {
     handleCloseUserMenu();
     dispatch(openDash());
   };
+  const handleCloseProfileSettings=()=>{
+    handleCloseUserMenu();
+    dispatch(openDash());
+    navigate("/dashboard/profile")
+  }
   const handleLogout = () => {
     handleCloseUserMenu();
     dispatch(logout());
@@ -284,14 +289,12 @@ const TopBar = () => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
+                  <MenuItem key={settings[0]} onClick={handleCloseProfileSettings}>
                     <Typography textAlign="center">{settings[0]}</Typography>
                   </MenuItem>
-                  <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
+                  
+                  <MenuItem key={settings[1]} onClick={handleLogout}>
                     <Typography textAlign="center">{settings[1]}</Typography>
-                  </MenuItem>
-                  <MenuItem key={settings[2]} onClick={handleLogout}>
-                    <Typography textAlign="center">{settings[2]}</Typography>
                   </MenuItem>
                 </Menu>
               </>
