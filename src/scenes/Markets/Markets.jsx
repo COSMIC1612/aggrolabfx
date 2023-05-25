@@ -6,6 +6,7 @@ import { useTheme } from "@emotion/react";
 import { tokens } from "../../theme";
 import { Button, Paper, Grid } from "@mui/material";
 import Loading from "../../components/Loading/Loading";
+import PopupButton from "../../components/PopupButton/PopupButton";
 
 const Markets = () => {
   const theme = useTheme();
@@ -194,6 +195,8 @@ const Markets = () => {
             </Button>
           </Grid>
         </Grid>
+        <PopupButton mode="predictfx"  text="EUR/USD Exchange Rate Prediction"/>
+        <PopupButton mode="profitPredict" text="Options Profit Prediction"/>
         <iframe
           title="options-widget"
           className={classes["widget-options"]}
